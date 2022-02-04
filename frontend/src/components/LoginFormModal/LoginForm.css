@@ -1,0 +1,50 @@
+#logIn-button {
+    width: 100px;
+    height: 35px;
+    border-radius: 7px;
+    border: 1px solid white;
+    background-color: #09c6f9;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+}
+
+#login-form {
+    width: 500px;
+    height: 300px;
+    border-radius: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#welcome-back {
+    position: absolute;
+    top: 20px;
+    font-size: larger;
+}
+
+#login-submit-button {
+    margin-top: 20px;
+    height: 50px;
+    width: 75%;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    font-size: larger;
+    background: linear-gradient(to left, #045de9, #09c6f9);
+    cursor: pointer;
+}
+
+.divider-login {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    text-align: left;
+    gap: 10px;
+    width: 75%;
+    height: 20%;
+}
+
+

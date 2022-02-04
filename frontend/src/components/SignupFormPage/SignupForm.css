@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.input-bar {
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid rgb(176, 176, 176);
+}
+
+#signup-button {
+    height: 50px;
+    width: 75%;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    font-size: larger;
+    background: linear-gradient(to left, #09c6f9, #045de9);
+    cursor: pointer;
+    transition-duration: .5s;
+}
+
+
+#sign-up {
+    font-size: larger;
+    border-bottom: rgb(235, 235, 235) solid 1px;
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+
+}
+
+#signup-form {
+    position: relative;
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 90vh;
+    width: 40vw;
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 12px;
+    gap: 20px;
+}
+
+.divider {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 75%;
+}
+
+.demo-user {
+    text-align: right;
+    width: 100%;
+    margin-right: 50px;
+    cursor: pointer;
+}

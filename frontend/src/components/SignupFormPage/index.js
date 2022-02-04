@@ -5,72 +5,94 @@ import * as sessionActions from "../../store/session";
 import './SignupForm.css'
 
 function SignupFormPage() {
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+    const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (password === confirmPassword) {
+            setErrors([]);
+            return dispatch(sessionActions.signup({ email, username, password }))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
+        }
+        return setErrors(['Confirm Password field must be the same as the Password field']);
+    };
+
+    const demoUser = e => {
+        return dispatch(sessionActions.login({credential: 'demo@user.io', password: 'password'}))
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
-  };
 
-  return (
-    <form onSubmit={handleSubmit}>
+    return (
+    <form onSubmit={handleSubmit} id="signup-form">
+        <p id="sign-up">Sign Up</p>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <div className="divider">
       <label>
         Email
-        <input
+        </label>
+        <input className="input-bar"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
+
+      </div>
+      <div className="divider">
       <label>
         Username
-        <input
+        </label>
+        <input className="input-bar"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-      </label>
+
+      </div>
+      <div className="divider">
       <label>
         Password
-        <input
+         </label>
+        <input className="input-bar"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
+
+      </div>
+      <div className="divider">
       <label>
         Confirm Password
-        <input
+         </label>
+        <input className="input-bar"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+
+      </div>
+      <button
+      id="signup-button"
+      type="submit">Continue</button>
+      <p
+      onClick={demoUser}
+      className="demo-user">Demo User</p>
+    </form >
   );
 }
 
