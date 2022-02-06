@@ -1,21 +1,36 @@
 import React from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, Redirect, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import * as sessionActions from '../../store/session'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
+    const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
 
   const goHome = e => {
       return <Redirect exact to='/'/>
   }
 
+  const logout = e => {
+      return dispatch(sessionActions.logout())
+  }
+
+  const makeListing = (
+    <Link to='host' id='host-place'>Host a Place</Link>
+  )
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div id='log-out-profile'>
+          <p>{sessionUser.username}</p>
+          <button
+            onClick={logout}
+          id='logout-button'>Log Out</button>
+      </div>
     );
   } else {
     sessionLinks = (
@@ -28,10 +43,9 @@ function Navigation({ isLoaded }){
 
   return (
       <div id='nav-bar'>
-      <div
-      onClick={goHome}
-       id='nav-logo'></div>
+      <Link to='/' id='nav-logo' />
     <ul id='nav-buttons'>
+        <li>{sessionUser && makeListing}</li>
       <li>
         {isLoaded && sessionLinks}
       </li>

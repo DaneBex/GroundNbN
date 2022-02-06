@@ -48,7 +48,6 @@
 }
 
 #user-button {
-
     height: 20px;
     width: 30px;
 }
@@ -63,10 +62,49 @@
     transition-duration: .5s;
 }
 
+#Host-place {
+    position: absolute;
+    right: 20%;
+    bottom: 25%;
+    height: 50px;
+    width: 100px;
+    border-radius: 15px;
+    border: 1px solid #E99004;
+    background-color: white;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
 #log-out:hover {
     background-color: red;
 }
 
-.profile-dropdown {
-    height: 70px;
+#log-out-profile {
+    width: 150px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 130px;
+    gap: 10px;
+}
+
+#logout-button {
+    width: 100px;
+    height: 30%;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    background-color: #045de9;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    background-color: #09c6f9;
 }
