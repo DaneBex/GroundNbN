@@ -18,6 +18,66 @@ module.exports = {
         email: 'user2@user.io',
         username: 'FakeUser2',
         hashedPassword: bcrypt.hashSync('password3')
+      },
+      {
+        email: 'richardFix@user.io',
+        username: 'RoddieRichard',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'miketrout@user.io',
+        username: 'Miketrouber',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'LiamQuaw@user.io',
+        username: 'Liantrophist',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'RoganOlson@user.io',
+        username: 'Rogolson',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'LutherRick@user.io',
+        username: 'Lextomorpo',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'Pauline@user.io',
+        username: 'PaulineHatesCats',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'NoelFinki@user.io',
+        username: 'Christmasnoel',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'TylerDurden@user.io',
+        username: 'TylerDurden',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'CampellPOpe@user.io',
+        username: 'DaPopeCamp',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'RyanFizerd@user.io',
+        username: 'RiRi',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'daveomose@user.io',
+        username: 'Steve-o-dave-o',
+        hashedPassword: bcrypt.hashSync('password')
+      },
+      {
+        email: 'momoney@user.io',
+        username: 'imHomeless',
+        hashedPassword: bcrypt.hashSync('password')
       }
     ], {});
   },
