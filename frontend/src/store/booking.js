@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf"
 const ADD_BOOKING = 'booking/ADD_BOOKING'
 
 const addBooking = booking => {
+    console.log('bookings', booking)
     return {
         type: ADD_BOOKING,
         payload: booking

@@ -22,6 +22,10 @@ export default function ListingPage() {
         dispatch(populatePlaces())
     }, [dispatch])
 
+    useEffect(() => {
+        console.log(new Date(startDate), endDate)
+    }, [startDate, endDate])
+
     if (places) {
         place = places.find(place => place.id === parseInt(placeId.id))
 
