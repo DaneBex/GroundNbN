@@ -12,9 +12,7 @@ const router = require('express').Router()
 
 router.get('/', async (req, res) => {
 const places = await Place.findAll();
-const vals = places.map(place => place.dataValues)
-console.log(vals)
-res.json(vals);
+res.json(places);
 })
 
 router.use('/session', sessionRouter)
