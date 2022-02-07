@@ -21,11 +21,12 @@ export default function HomePage() {
 
     const takeToPage = (id) => {
         console.log(id)
-     return history.push(`/places/${id}`)
+        return history.push(`/places/${id}`)
     }
 
 
     if (!sessionUser) return <Redirect to='/signup' />
+
     return (
         <>
             <div id="home-page-welcome">
@@ -35,14 +36,14 @@ export default function HomePage() {
             </div>
             <div id="places">
                 {places && places.map(place => (
-                    <div onClick={() => takeToPage(place.id)} key={place.id} className="listing-box">
-                        <img className="listing-photos" key={place.image} src={place.image}></img>
-                        <h2 key={place.name}>{place.name}</h2>
+                    <div key={place.id} className="listing-box">
+                        <img onClick={() => takeToPage(place.id)} className="listing-photos" key={place.image} src={place.image}></img>
+                        <h2 onClick={() => takeToPage(place.id)} key={place.name}>{place.name}</h2>
                         {sessionUser.id === place.userId &&
-                        <div className="owner">
-                        <Link className="edit-button" to={`places/${place.id}/edit`}>Edit</Link>
-                        <p onClick={() => dispatch(deleteListing(place.id))} className="delete-button">Delete</p>
-                        </div>
+                            <div className="owner">
+                                <Link className="edit-button" to={`places/${place.id}/edit`}>Edit</Link>
+                                <p onClick={() => dispatch(deleteListing(place.id))} className="delete-button">Delete</p>
+                            </div>
                         }
                         <p id="price">{`$${place.price}/ night`}</p>
                     </div>

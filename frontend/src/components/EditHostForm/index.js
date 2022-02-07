@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, useParams } from 'react-router-dom'
+import { Redirect, useHistory, useParams } from 'react-router-dom'
 import { editListing, makeListing, populatePlaces } from '../../store/place'
 import './EditHostForm.css'
 
@@ -8,8 +8,9 @@ import './EditHostForm.css'
 
 export default function EditHostForm() {
     const dispatch = useDispatch()
-    let places = {}
+    let places = []
     places = useSelector(state => state.place.place)
+    const history = useHistory()
     let place = {}
 
     useEffect(() => {
@@ -50,7 +51,7 @@ export default function EditHostForm() {
 
         dispatch(editListing(place.id, vals))
         console.log('redirecting')
-        return <Redirect to='/' />
+        return history.push('/')
     }
 
     if (places) {
