@@ -30,6 +30,15 @@ export const login = (user) => async (dispatch) => {
     return response;
 };
 
+// export const populateUsers = () => async dispatch => {
+//     const response = await csrfFetch('/api/users')
+
+//     if (response.ok) {
+//         const users = await response.json()
+//         dispatch
+//     }
+// }
+
 export const restoreUser = () => async dispatch => {
     const response = await csrfFetch('/api/session');
     const data = await response.json();

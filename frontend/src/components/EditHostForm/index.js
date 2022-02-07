@@ -36,7 +36,6 @@ export default function EditHostForm() {
 
     const submission = e => {
         e.preventDefault()
-        console.log(userId)
 
         const vals = {
             userId,
@@ -50,6 +49,7 @@ export default function EditHostForm() {
         }
 
         dispatch(editListing(place.id, vals))
+        console.log('redirecting')
         return <Redirect to='/' />
     }
 

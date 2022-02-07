@@ -1,8 +1,18 @@
 * {
     margin: 0;
+    overflow: hidden;
+}
+
+#my-bookings {
+    position: absolute;
+    right: 35%;
+    text-decoration: none;
+    color:#045de9;
+    cursor: pointer;
 }
 
 #nav-bar {
+    overflow: hidden;
     position: relative;
     display: flex;
     align-items: center;

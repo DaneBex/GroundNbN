@@ -93,6 +93,8 @@ const placeReducer = (state = initialState, action) => {
             return newState;
         case REMOVE_PLACE:
             newState = Object.assign({}, state);
+            delete newState[action.id]
+            return newState;
         default:
             return state;
     }

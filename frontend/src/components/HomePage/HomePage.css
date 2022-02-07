@@ -8,6 +8,24 @@
     border-radius: 20px;
 }
 
+.edit-button {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.delete-button {
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    border-bottom: 1px solid black;
+}
+
+.edit-button:hover {
+    border-bottom: 1px solid black;
+}
+
 #home-page-welcome {
     height: 400px;
     background-color: #FDC670;

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Redirect, Link } from "react-router-dom"
-import { populatePlaces } from "../../store/place"
+import { Redirect, Link, useHistory } from "react-router-dom"
+import { deleteListing, populatePlaces } from "../../store/place"
 import EditHostForm from "../EditHostForm"
 import './HomePage.css'
 
@@ -10,6 +10,7 @@ export default function HomePage() {
     const dispatch = useDispatch()
     const sessionUser = useSelector((state) => state.session.user)
     const places = useSelector((state) => state.place.place)
+    const history = useHistory()
 
 
     useEffect(() => {
@@ -18,8 +19,10 @@ export default function HomePage() {
         console.log('happened')
     }, [dispatch])
 
-
-
+    const takeToPage = (id) => {
+        console.log(id)
+     return history.push(`/places/${id}`)
+    }
 
 
     if (!sessionUser) return <Redirect to='/signup' />
@@ -32,13 +35,13 @@ export default function HomePage() {
             </div>
             <div id="places">
                 {places && places.map(place => (
-                    <div key={place.id} className="listing-box">
+                    <div onClick={() => takeToPage(place.id)} key={place.id} className="listing-box">
                         <img className="listing-photos" key={place.image} src={place.image}></img>
                         <h2 key={place.name}>{place.name}</h2>
                         {sessionUser.id === place.userId &&
                         <div className="owner">
-                        <Link to={`places/${place.id}/edit`}>Edit</Link>
-                        <p >Delete</p>
+                        <Link className="edit-button" to={`places/${place.id}/edit`}>Edit</Link>
+                        <p onClick={() => dispatch(deleteListing(place.id))} className="delete-button">Delete</p>
                         </div>
                         }
                         <p id="price">{`$${place.price}/ night`}</p>

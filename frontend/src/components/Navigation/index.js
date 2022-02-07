@@ -5,10 +5,12 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import * as sessionActions from '../../store/session'
 import './Navigation.css';
+import { makeBooking } from '../../store/booking';
 
 function Navigation({ isLoaded }){
     const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
+  let myBookings = [];
 
   const goHome = e => {
       return <Redirect exact to='/'/>
@@ -19,8 +21,9 @@ function Navigation({ isLoaded }){
   }
 
   const makeListing = (
-    <Link to='host' id='host-place'>Host a Place</Link>
+    <Link to='/host' id='host-place'>Host a Place</Link>
   )
+
 
   let sessionLinks;
   if (sessionUser) {
@@ -45,6 +48,7 @@ function Navigation({ isLoaded }){
       <div id='nav-bar'>
       <Link to='/' id='nav-logo' />
     <ul id='nav-buttons'>
+        <li>{sessionUser && <Link id='my-bookings' to={`/bookings/${sessionUser.id}`}>My Bookings</Link>}</li>
         <li>{sessionUser && makeListing}</li>
       <li>
         {isLoaded && sessionLinks}

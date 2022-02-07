@@ -8,6 +8,8 @@ import HomePage from "./components/HomePage";
 import HostForm from "./components/HostForm";
 import EditHostForm from "./components/EditHostForm";
 import { populatePlaces } from "./store/place";
+import ListingPage from "./components/ListingPage";
+import BookingsPage from "./components/BookingsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,14 +30,20 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path='/'>
-            <HomePage />
-          </Route>
           <Route path='/host'>
-          <HostForm />
+            <HostForm />
           </Route>
           <Route path='/places/:id/edit'>
             <EditHostForm />
+          </Route>
+          <Route path='/places/:id' >
+            <ListingPage />
+          </Route>
+          <Route path='/bookings/:id'>
+            <BookingsPage />
+          </Route>
+          <Route exact path='/'>
+            <HomePage />
           </Route>
         </Switch>
       )}
