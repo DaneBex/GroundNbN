@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler');
+const express = require('express')
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User, Place } = require('../../db/models');
 const { requireAuth, restoreUser } = require('../../utils/auth.js');
