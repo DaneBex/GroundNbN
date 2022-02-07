@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     country: DataTypes.STRING,
     name: DataTypes.STRING,
     price: DataTypes.DECIMAL,
-    image: DataTypes.TEXT
+    image: DataTypes.TEXT,
+    description: DataTypes.TEXT
   }, {});
   Place.associate = function (models) {
     // associations can be defined here
