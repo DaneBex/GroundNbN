@@ -23,7 +23,7 @@ export default function BookingsPage() {
         <h1 id='my-bookings-title'>My Bookings</h1>
         <div id='booking-box'>
         {myBookings && myBookings.map(booking => (
-            <p key={booking.id} id='start-date'>{new Date(booking.startDate)}</p>
+            <p key={booking.id} id='start-date'>{(booking.startDate)}</p>
         ))}
         </div>
         </>
