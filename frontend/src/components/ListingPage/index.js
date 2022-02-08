@@ -13,7 +13,9 @@ export default function ListingPage() {
     const history = useHistory()
     const { id } = useParams();
     const usersObj = useSelector(state => state.user)
+    const bookingsObj = useSelector(state => state.booking)
     const users = Object.values(usersObj)
+    const bookings = Object.values(bookingsObj)
     const sessionUser = useSelector(state => state.session.user)
     let place = useSelector(state => state.place[id])
     let PossibleDelete = () => null
@@ -38,23 +40,30 @@ export default function ListingPage() {
 
     const createBooking = (e) => {
         let newErrors = []
+        console.log(startDate, endDate)
         e.preventDefault();
-        if (Date.parse(endDate) > Date.parse(startDate)) {
+        if (Date.parse(new Date()) > Date.parse(startDate)) {
+            newErrors.push('Starting date cannot be earlier than tomorrow')
+        }
+        if (Date.parse(endDate) <= Date.parse(startDate)) {
+            newErrors.push('Ending date must be after starting date')
+        }
+        bookings.forEach(booking => {
+            if (place.id === booking.placeId && ((Date.parse(new Date(startDate)) >= Date.parse(new Date(booking.startDate))) && Date.parse(new Date(startDate)) < Date.parse(new Date(booking.endDate))) || (Date.parse(new Date(endDate)) > Date.parse(new Date(booking.startDate)) && Date.parse(new Date(endDate)) < Date.parse(new Date(booking.endDate)))) {
+                newErrors.push('Place is already booked at this time')
+            }
+        })
+        if (newErrors.length === 0) {
             dispatch(makeBooking({ placeId: place.id, userId: sessionUser.id, startDate, endDate }))
             return history.push(`/bookings/${sessionUser.id}`)
-        }
-         if (Date.parse(new Date()) > Date.parse(startDate)) {
-            newErrors.push('Starting date cannot be earlier than today')
-        }
-        if (Date.parse(endDate) <= Date.parse(startDate)){
-            newErrors.push('Ending date must be after starting date')
         }
         setErrors(newErrors)
     }
 
+
     const deleteBooking = e => {
         dispatch(deleteListing(place.id))
-       return history.push('/')
+        return history.push('/')
     }
 
     if (sessionUser.id === place?.userId) {
@@ -62,8 +71,8 @@ export default function ListingPage() {
         PossibleDelete = () => {
             return (
                 <div id='delete-div'>
-                <p onClick={() => deleteBooking()} id='delete-listingPage'>Delete Your Listing</p>
-                <i onClick={() => deleteBooking()} class="far fa-trash-alt"></i>
+                    <p onClick={() => deleteBooking()} id='delete-listingPage'>Delete Your Listing</p>
+                    <i onClick={() => deleteBooking()} class="far fa-trash-alt"></i>
                 </div>
             )
         }
@@ -74,9 +83,9 @@ export default function ListingPage() {
             <div id='title-top'>
                 <div id='details'>
                     <div id='title-details'>
-                    <h1 className='title'>{place?.name}</h1>
+                        <h1 className='title'>{place?.name}</h1>
                         <h2 className='owner-listing'>{`--Posted By: ${place?.ownerName}`}</h2>
-                        </div>
+                    </div>
                     <div id='location'>
                         <p className='state'>{place?.state}</p>
                         <p className='country'>{place?.country}</p>
@@ -93,8 +102,8 @@ export default function ListingPage() {
                         <p id='per-night'> / night</p>
                     </div>
                     <ul id='booking-errors'>
-                    {errors.map(error => <li key={error} className='booking-error'>{error}</li>
-                    )}
+                        {errors.map(error => <li key={error} className='booking-error'>{error}</li>
+                        )}
                     </ul>
                     <label id='startdate-label'>Start Date</label>
                     <input
