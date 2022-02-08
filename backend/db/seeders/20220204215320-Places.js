@@ -59,6 +59,58 @@ module.exports = {
           description: "Adorable apartment with private entrance in the historic Salt Lake Avenues district. Panoramic views of the city and mountains. 5 minutes to downtown, 5 minutes to shopping and restaurants (Whole Foods, Trader Joe's, etc). Off street parking if you have a car; there is also a bus stop across the street on the corner. One block to open space and miles of running/biking trails.",
           createdAt: new Date(),
           updatedAt: new Date()
+        },
+        {
+          userId: 3,
+          address: '5341 NotRl Rd',
+          city: 'Usur',
+          state: 'Oklahoma',
+          country: 'United States',
+          name: 'Lake House',
+          price: '219',
+          image: 'https://aic.azureedge.net/pgl-release/Images/ArticleImages/23/23330.jpg',
+          description: "An extraordinarily special, memorable, & remarkable place. Serene, peaceful, isolated, brightest stars - 6.7 miles to Walmart (Colorado Springs) Secluded in The Black Forest - Pet (Everything) friendly - a clear swimming & skating pond, creeks & waterfalls, look-out tower, and more. More than a place to stay -a self-contained outdoor experience.",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 8,
+          address: '92 Southern Ave',
+          city: 'Columbus',
+          state: 'Ohio',
+          country: 'United States',
+          name: 'Sunny Side Home',
+          price: '159',
+          image: 'https://photos.zillowstatic.com/fp/18f20fb301feef35ab71ed6e4389fe46-p_e.jpg',
+          description: "Take it easy at this unique and tranquil getaway. You can enjoy beautiful views of Darby Creek and the land over the water!",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 2,
+          address: '561 McDonell Rd',
+          city: 'Ramoin',
+          state: 'Nevada',
+          country: 'United States',
+          name: 'Cool Tranquil Getaway',
+          price: '219',
+          image: 'https://www.columbusnavigator.com/wp-content/uploads/2019/10/Cook-Rd-1-770x513.jpg',
+          description: "Whether you are traveling solo for work, or for recreation with your family, our lovely two bedroom, 1200 square foot guest house is ideal. One of two houses on the property (we live in the other) designed and built in 1920 as a summer residence for a local family. These 5.5 acres of park-like setting are situated on the serene Stillwater River. Tucked away, in the midst of the suburbs, surrounded by trees, gardens and the sound of birds, this gem of a place is a perfect home away from home",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 5,
+          address: '901 Ressee Ln',
+          city: 'Lacos',
+          state: 'Oregon',
+          country: 'United States',
+          name: 'Home of the Hearted',
+          price: '349',
+          image: "https://static1.housesforsale.com/assets/cover/housesforsalebg.webp",
+          description: "House is the original on the street, dated 1904. The house was completely refreshed and rebuilt adding an additional 2200 sq feet for a total of 3500 sq feet. 6 bedrooms and 4 1/2 bath. The house is a relaxing Oasis in the city. The backyard has a gas Fireplace, cedar pergola and pool house with changing room. There is a natural gas grill and heated shower. The pool and hotub with another large firepit feature with seating. You really must see to appreciate this 5 star private backyard",
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
       ], {});
 
@@ -69,8 +121,8 @@ module.exports = {
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
 
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+      Example:   */
+      return queryInterface.bulkDelete('Places', null, {});
+
   }
 };
