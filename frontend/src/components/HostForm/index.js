@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import { makeListing } from '../../store/place'
 import './HostForm.css'
 
@@ -15,6 +15,7 @@ export default function HostForm() {
     const [price, setPrice] = useState('')
     const [image, setImage] = useState('')
     const [description, setDescription] = useState('')
+    const history = useHistory()
 
     const submission = e => {
         e.preventDefault()
@@ -33,7 +34,7 @@ export default function HostForm() {
         }
 
         dispatch(makeListing(vals))
-        return <Redirect to='/' />
+        return history.push('/')
     }
 
 
