@@ -15,6 +15,18 @@
     gap: 20px;
 }
 
+#form-for {
+    color: #045de9;
+    font-weight: 300;
+    font-size: 40px;
+    text-align: center;
+}
+
+#hosting-form-errors {
+    margin-top: 10px;
+    color: red;
+}
+
 input {
     height: 30px;
     border-radius: 10px;

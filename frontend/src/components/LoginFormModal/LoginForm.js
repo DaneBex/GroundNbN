@@ -25,7 +25,7 @@ function LoginForm() {
             id="login-form"
             onSubmit={handleSubmit}>
                 <p id="welcome-back">Welcome Back</p>
-            <ul>
+            <ul id="login-errors">
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}

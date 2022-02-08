@@ -20,6 +20,7 @@ export default function ListingPage() {
 
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
+    const [errors, setErrors] = useState([])
 
 
     if (users && place) {
@@ -37,9 +38,12 @@ export default function ListingPage() {
 
     const createBooking = (e) => {
         e.preventDefault();
-        console.log(startDate, endDate)
-        dispatch(makeBooking({ placeId: place.id, userId: sessionUser.id, startDate, endDate }))
-        history.push(`/bookings/${sessionUser.id}`)
+        if (Date.parse(endDate) > Date.parse(startDate)) {
+            dispatch(makeBooking({ placeId: place.id, userId: sessionUser.id, startDate, endDate }))
+            return history.push(`/bookings/${sessionUser.id}`)
+        } else {
+            return setErrors(['Ending date must be after starting date'])
+        }
     }
 
     const deleteBooking = e => {
@@ -82,6 +86,10 @@ export default function ListingPage() {
                         <p id='price-page'>{`$${place?.price}`}</p>
                         <p id='per-night'> / night</p>
                     </div>
+                    <ul id='booking-errors'>
+                    {errors.map(error => <li key={error} className='booking-error'>{error}</li>
+                    )}
+                    </ul>
                     <label>Start Date</label>
                     <input
                         value={startDate}

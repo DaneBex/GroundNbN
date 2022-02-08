@@ -1,3 +1,6 @@
+* {
+overflow: auto;
+}
 
 #hostform {
 position: relative;
@@ -14,8 +17,18 @@ border-radius: 12px;
 gap: 20px;
 }
 
+#description-box-editform {
+    height: 80px;
+    width: 450px;
+}
+
 #edit-title {
     font-weight: 300;
+    color: #045de9;
+}
+
+#editform-errors {
+    color: red;
 }
 
 input {

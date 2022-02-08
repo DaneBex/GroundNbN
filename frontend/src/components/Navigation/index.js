@@ -49,9 +49,9 @@ function Navigation({ isLoaded }){
       <div id='nav-bar'>
       <Link to='/' id='nav-logo' />
     <ul id='nav-buttons'>
-        <li>{sessionUser && <Link id='my-bookings' to={`/bookings/${sessionUser.id}`}>My Bookings</Link>}</li>
-        <li>{sessionUser && makeListing}</li>
-      <li>
+        <li className='nav-lis'>{sessionUser && <Link id='my-bookings' to={`/bookings/${sessionUser.id}`}>My Bookings</Link>}</li>
+        <li className='nav-lis'>{sessionUser && makeListing}</li>
+      <li className='nav-lis'>
         {isLoaded && sessionLinks}
       </li>
     </ul>

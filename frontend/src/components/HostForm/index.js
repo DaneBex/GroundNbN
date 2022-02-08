@@ -15,11 +15,14 @@ export default function HostForm() {
     const [price, setPrice] = useState('')
     const [image, setImage] = useState('')
     const [description, setDescription] = useState('')
+    const [errors, setErrors] = useState([])
     const history = useHistory()
 
     const submission = e => {
         e.preventDefault()
-        console.log(userId)
+        let newErrors = [];
+
+        if (!address || !city || !state || !country || !name || !price || !image || !description) newErrors.push('All fields are required to be entered')
 
         const vals = {
             userId,
@@ -33,8 +36,10 @@ export default function HostForm() {
             description
         }
 
+        if (newErrors.length === 0) {
         dispatch(makeListing(vals))
         return history.push('/')
+        } else setErrors(newErrors)
     }
 
 
@@ -42,6 +47,19 @@ export default function HostForm() {
         <form
         onSubmit={submission}
         id="hostform">
+            <h1 id='form-for'>{`Form For: ${name}`}</h1>
+            <ul id='hosting-form-errors'>
+                {errors.map(error => (
+                    <li className='hosting-form-error' key={error}>{error}</li>
+                ))}
+            </ul>
+            <div className='divider'>
+                <label>Place Name</label>
+                <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type='text'></input>
+            </div>
             <div className='divider'>
                 <label>Address</label>
                 <input
@@ -68,13 +86,6 @@ export default function HostForm() {
                 <input
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
-                type='text'></input>
-            </div>
-            <div className='divider'>
-                <label>Place Name</label>
-                <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
                 type='text'></input>
             </div>
             <div className='divider'>

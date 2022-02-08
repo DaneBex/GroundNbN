@@ -105,6 +105,10 @@
     gap: 10px;
 }
 
+.nav-lis {
+    overflow: hidden;
+}
+
 #logout-button {
     width: 100px;
     height: 30%;

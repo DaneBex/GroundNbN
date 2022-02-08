@@ -5,6 +5,16 @@
     overflow: hidden;
 }
 
+.signup-error {
+    color: red;
+}
+
+#signup-errors {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .input-bar {
     height: 50px;
     border-radius: 10px;

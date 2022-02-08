@@ -31,6 +31,8 @@ export default function EditHostForm() {
     const [name, setName] = useState(place?.name)
     const [price, setPrice] = useState(place?.price)
     const [image, setImage] = useState(place?.image)
+    const [description, setDescription] = useState(place?.description)
+    const [errors, setErrors] = useState([])
 
     // if (place) {
     //     setAddress(place.address)
@@ -46,6 +48,10 @@ export default function EditHostForm() {
     const submission = e => {
         e.preventDefault()
 
+        let newErrors = [];
+
+        if (!address || !city || !state || !country || !name || !price || !image || !description) newErrors.push('All fields are required to be entered')
+
         const vals = {
             userId,
             address,
@@ -54,12 +60,15 @@ export default function EditHostForm() {
             country,
             name,
             price,
-            image
+            image,
+            description
         }
 
+
+        if (newErrors.length === 0){
         dispatch(editListing(place.id, vals))
-        console.log('redirecting')
         return history.push(`/places/${place.id}`)
+        } else setErrors(newErrors)
     }
 
     // if (!sessionUser) return history.push('/signup')
@@ -68,7 +77,17 @@ export default function EditHostForm() {
         <form
             onSubmit={submission}
             id="hostform">
-            <h1 id='edit-title'>Edit {place?.name}</h1>
+            <h1 id='edit-title'>Edit: {name}</h1>
+            <ul id='editform-errors'>
+            {errors.map(error => <li key={error} className='editform-error'>{error}</li>)}
+            </ul>
+            <div className='divider'>
+                <label>Place Name</label>
+                <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    type='text'></input>
+            </div>
             <div className='divider'>
                 <label>Address</label>
                 <input
@@ -99,13 +118,6 @@ export default function EditHostForm() {
                     type='text'></input>
             </div>
             <div className='divider'>
-                <label>Place Name</label>
-                <input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    type='text'></input>
-            </div>
-            <div className='divider'>
                 <label>Price</label>
                 <input
                     value={price}
@@ -118,6 +130,14 @@ export default function EditHostForm() {
                     value={image}
                     onChange={e => setImage(e.target.value)}
                     placeholder='image url here'></textarea>
+            </div>
+            <div>
+                <label>Description</label>
+                <textarea
+                    id='description-box-editform'
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                    placeholder='Description Here'></textarea>
             </div>
             <button id='submit-form'>Post</button>
         </form>
