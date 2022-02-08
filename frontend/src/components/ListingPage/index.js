@@ -42,8 +42,9 @@ export default function ListingPage() {
         let newErrors = []
         console.log(startDate, endDate)
         e.preventDefault();
+        if (!startDate || !endDate) newErrors.push('Dates are required')
         if (Date.parse(new Date()) > Date.parse(startDate)) {
-            newErrors.push('Starting date cannot be earlier than tomorrow')
+            newErrors.push('Starting date must be tomorrow or later')
         }
         if (Date.parse(endDate) <= Date.parse(startDate)) {
             newErrors.push('Ending date must be after starting date')
