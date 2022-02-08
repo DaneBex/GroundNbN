@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 90vh;
+    height: auto;
     width: 40vw;
     border: 1px solid rgb(176, 176, 176);
     border-radius: 12px;
@@ -29,6 +29,12 @@ textarea {
     align-items: center;
 }
 
+#description-box {
+    margin-top: 5px;
+    width: 100%;
+    height: 150px;
+}
+
 .divider {
     margin-top: 5px;
     display: flex;
@@ -43,5 +49,6 @@ textarea {
     height: 30px;
     border-radius: 12px;
     border: 1px solid white;
-    background: linear-gradient(to left, #e99004, #fdc670)
+    background: linear-gradient(to left, #e99004, #fdc670);
+    margin-bottom: 30px;
 }

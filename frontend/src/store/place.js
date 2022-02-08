@@ -1,3 +1,4 @@
+
 import { csrfFetch } from "./csrf"
 
 
@@ -35,7 +36,7 @@ export const populatePlaces = () => async (dispatch) => {
     const response = await csrfFetch('/api/')
     if (response.ok) {
         const places = await response.json()
-        dispatch(addPlace(places))
+        dispatch(loadPlace(places))
     }
 }
 
@@ -75,24 +76,23 @@ export const deleteListing = (id) => async dispatch => {
     }
 }
 
-const initialState = { place: null };
+const initialState = {};
 
 const placeReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_PLACE:
-            const allPlace = {};
+            newState = {}
             action.payload.forEach(place => {
-                allPlace[place.id] = place
+                newState[place.id] = place
             })
-            return {...state, allPlace}
+            return newState
         case ADD_PLACE:
             newState = { ...state }
-            newState = Object.assign({}, state);
-            newState.place = action.payload;
+            newState[action.payload.id] = action.payload
             return newState;
         case REMOVE_PLACE:
-            newState = Object.assign({}, state);
+            newState = { ...state }
             delete newState[action.id]
             return newState;
         default:

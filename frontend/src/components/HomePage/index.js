@@ -9,9 +9,9 @@ import './HomePage.css'
 export default function HomePage() {
     const dispatch = useDispatch()
     const sessionUser = useSelector((state) => state.session.user)
-    const places = useSelector((state) => state.place.place)
+    const placesObj = useSelector((state) => state.place)
     const history = useHistory()
-
+    const places = Object.values(placesObj)
 
     useEffect(() => {
         dispatch(populatePlaces())

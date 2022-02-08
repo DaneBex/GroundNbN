@@ -14,6 +14,7 @@ export default function HostForm() {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [image, setImage] = useState('')
+    const [description, setDescription] = useState('')
 
     const submission = e => {
         e.preventDefault()
@@ -27,7 +28,8 @@ export default function HostForm() {
             country,
             name,
             price,
-            image
+            image,
+            description
         }
 
         dispatch(makeListing(vals))
@@ -87,6 +89,14 @@ export default function HostForm() {
                 value={image}
                 onChange={e => setImage(e.target.value)}
                 placeholder='image url here'></textarea>
+                <div>
+                <label>Description</label>
+                <textarea
+                id='description-box'
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+                placeholder='Description Here'></textarea>
+                </div>
             </div>
             <button id='submit-form'>Post</button>
         </form>

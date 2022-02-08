@@ -5,6 +5,7 @@ import { csrfFetch, restoreCSRF } from "./csrf";
 import * as sessionActions from './session';
 import placeReducer from "./place";
 import bookingReducer from "./booking";
+import userReducer from "./user";
 
 
 
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
  session : sessionReducer,
  place : placeReducer,
  booking: bookingReducer,
+ user: userReducer,
 });
 
 let enhancer;

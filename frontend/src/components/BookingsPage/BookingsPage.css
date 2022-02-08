@@ -1,0 +1,61 @@
+.times-price {
+margin-left: 20px;
+display: flex;
+justify-content: center;
+gap: 30px;
+flex-direction: column;
+}
+
+#my-bookings-title {
+    color: #045de9;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#booking-box {
+    height: auto;
+    display: flex;
+    overflow: hidden;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.delete-booking-words {
+    cursor: pointer;
+}
+
+.fas {
+    cursor: pointer;
+}
+
+.delete-booking {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.start-date {
+    font-weight: 900;
+}
+
+.booking-image {
+    object-fit: cover;
+    height: 250px;
+    border-radius: 20px;
+}
+
+.booking-name {
+    font-size: 30px;
+    padding-right: 20px;
+    width: 100px;
+    font-weight: 300;
+    line-height: 60px;
+}
+
+.name-img{
+    margin-left: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}

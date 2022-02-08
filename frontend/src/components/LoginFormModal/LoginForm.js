@@ -36,6 +36,7 @@ function LoginForm() {
                 </label>
                 <input
                     type="text"
+                    id="login-email"
                     value={credential}
                     onChange={(e) => setCredential(e.target.value)}
                     required

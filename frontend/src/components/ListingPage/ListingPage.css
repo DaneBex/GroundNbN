@@ -16,10 +16,40 @@ margin: auto;
     flex-direction: column;
 }
 
+#title-details {
+    display: flex;
+    align-items: center;
+}
+
+.owner-listing {
+
+    margin-left: 30px;
+    font-weight: 200;
+}
+
+#delete-listingPage {
+    text-align: end;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#delete-div {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 15px;
+}
+
+.far {
+    text-align: end;
+    cursor: pointer;
+}
+
 #listing-img {
     display: block;
-
+   object-fit: contain;
     margin: auto;
+    width: 800px;
     margin-top: 20px;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -33,15 +63,15 @@ margin: auto;
 }
 
 #lower-section {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     height: 350px;
     overflow: hidden;
+    justify-content: center;
 }
 
 #description {
     width: 60%;
-    padding: 5%;
     font-size: 20px;
     font-weight: 300;
     line-height: 50px;

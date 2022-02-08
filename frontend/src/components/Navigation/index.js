@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Redirect, Link } from 'react-router-dom';
+import { NavLink, Redirect, Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -9,6 +9,7 @@ import { makeBooking } from '../../store/booking';
 
 function Navigation({ isLoaded }){
     const dispatch = useDispatch()
+    const history = useHistory()
   const sessionUser = useSelector(state => state.session.user);
   let myBookings = [];
 
@@ -17,7 +18,7 @@ function Navigation({ isLoaded }){
   }
 
   const logout = e => {
-      return dispatch(sessionActions.logout())
+      return dispatch(sessionActions.logout()).then(() => history.push('/'))
   }
 
   const makeListing = (
