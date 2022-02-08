@@ -13,6 +13,7 @@ export default function BookingsPage() {
     const places = Object.values(placesObj)
     let myBookings = [];
     let myPlaces = [];
+    let NoBookings = null
 
     if (bookings && sessionUser && places) {
         myBookings = bookings.filter(booking => booking.userId === sessionUser.id)
@@ -32,11 +33,18 @@ export default function BookingsPage() {
         console.log(bookings)
     }, [dispatch])
 
+    if (places.length === 0) {
+        NoBookings = () => {
+            return (
+                <p>No Bookings Yet</p>
+            )
+        }
+    }
+
 
     return (
         <>
             <h1 id='my-bookings-title'>My Bookings</h1>
-
             {myBookings && myBookings.map(booking => (
                 <div key={booking.id} id='booking-box'>
                     <div key={booking.userId} className='name-img'>

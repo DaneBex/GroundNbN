@@ -37,13 +37,19 @@ export default function ListingPage() {
 
 
     const createBooking = (e) => {
+        let newErrors = []
         e.preventDefault();
         if (Date.parse(endDate) > Date.parse(startDate)) {
             dispatch(makeBooking({ placeId: place.id, userId: sessionUser.id, startDate, endDate }))
             return history.push(`/bookings/${sessionUser.id}`)
-        } else {
-            return setErrors(['Ending date must be after starting date'])
         }
+         if (Date.parse(new Date()) > Date.parse(startDate)) {
+            newErrors.push('Starting date cannot be earlier than today')
+        }
+        if (Date.parse(endDate) <= Date.parse(startDate)){
+            newErrors.push('Ending date must be after starting date')
+        }
+        setErrors(newErrors)
     }
 
     const deleteBooking = e => {
