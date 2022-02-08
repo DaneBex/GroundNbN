@@ -129,7 +129,7 @@ export default function EditHostForm() {
                 <textarea
                     value={image}
                     onChange={e => setImage(e.target.value)}
-                    placeholder='image url here'></textarea>
+                    placeholder='image link here'></textarea>
             </div>
             <div>
                 <label>Description</label>
@@ -139,7 +139,7 @@ export default function EditHostForm() {
                     onChange={e => setDescription(e.target.value)}
                     placeholder='Description Here'></textarea>
             </div>
-            <button id='submit-form'>Post</button>
+            <button id='submit-form'>Edit</button>
         </form>
     )
 }

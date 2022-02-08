@@ -90,7 +90,7 @@ export default function ListingPage() {
                     {errors.map(error => <li key={error} className='booking-error'>{error}</li>
                     )}
                     </ul>
-                    <label>Start Date</label>
+                    <label id='startdate-label'>Start Date</label>
                     <input
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}

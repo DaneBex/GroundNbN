@@ -44,8 +44,8 @@ export default function BookingsPage() {
                         <img key={booking.image} className='booking-image' src={booking.image}></img>
                     </div>
                     <div key={booking.id + 1000} className='times-price'>
-                        <p key={booking.startDate} className='start-date'>{`Start Date: ${new Date(booking.startDate).toString()}`}</p>
-                        <p key={booking.endDate} className='end-date'>{`End Date: ${new Date(booking.endDate).toString()}`}</p>
+                        <p key={booking.startDate} className='start-date'>{`Start Date: ${new Date(booking.startDate).toString().slice(0, 15)}`}</p>
+                        <p key={booking.endDate} className='end-date'>{`End Date: ${new Date(booking.endDate).toString().slice(0, 15)}`}</p>
                         <p key={booking.price} className='booking-price'>{`$${booking.price} / night`}</p>
                     </div>
                     <div key={booking.name + 'delete'} className='delete-booking'>

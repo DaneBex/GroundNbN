@@ -100,7 +100,7 @@ export default function HostForm() {
                 <textarea
                 value={image}
                 onChange={e => setImage(e.target.value)}
-                placeholder='image url here'></textarea>
+                placeholder='image link here'></textarea>
                 <div>
                 <label>Description</label>
                 <textarea
