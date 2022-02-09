@@ -50,7 +50,7 @@ export default function ListingPage() {
     }, [dispatch])
 
 
-    const createBooking = (e) => {
+    const createBooking = async (e) => {
         let newErrors = []
         console.log(startDate, endDate)
         e.preventDefault();
@@ -68,7 +68,7 @@ export default function ListingPage() {
             }
         })
         if (newErrors.length === 0) {
-            dispatch(makeBooking({ placeId: place.id, userId: sessionUser.id, startDate, endDate }))
+            await dispatch(makeBooking({ placeId: place.id, userId: sessionUser.id, startDate, endDate }))
             return history.push(`/bookings/${sessionUser.id}`)
         }
         setErrors(newErrors)
