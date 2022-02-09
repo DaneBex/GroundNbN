@@ -61,6 +61,15 @@ export const populateBookings = () => async dispatch => {
     }
 }
 
+export const populateUserBookings = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/bookings/${id}`)
+
+    if (response.ok) {
+        const bookings = await response.json()
+        dispatch(loadBooking(bookings))
+    }
+}
+
 
 
 const initialState = {}
