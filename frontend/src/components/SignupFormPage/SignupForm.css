@@ -13,10 +13,27 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    height: 50px;
+}
+
+#signup-page-image {
+position: absolute;
+height: 100vh;
+width: 70vw;
+
+border-radius: 20px;
+right: 30px;
+}
+
+#sign-up-ptext {
+    color: #717171;
+    font-size: 16px;
+    overflow: hidden;
+    padding-bottom: 5px;
 }
 
 .input-bar {
-    height: 50px;
+    height: 30px;
     border-radius: 10px;
     border: 1px solid rgb(176, 176, 176);
 }
@@ -45,7 +62,20 @@
 
 }
 
+#sign-up-title {
+    font-size: 32px;
+    overflow: hidden;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    margin-left: 30px;
+}
+
 #signup-form {
+    position: absolute;
+    left: -300px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 20%);
     position: relative;
     display: flex;
     margin: auto;
@@ -54,7 +84,7 @@
     justify-content: center;
     flex-direction: column;
     height: 90vh;
-    width: 40vw;
+    width: 30vw;
     border: 1px solid rgb(176, 176, 176);
     border-radius: 12px;
     gap: 20px;
@@ -62,6 +92,7 @@
 
 .divider {
     margin-top: 5px;
+    height: 70px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -73,4 +104,6 @@
     width: 100%;
     margin-right: 50px;
     cursor: pointer;
+    padding-bottom: 5px;
+    overflow: hidden;
 }

@@ -60,3 +60,63 @@ flex-direction: column;
     display: flex;
     align-items: center;
 }
+
+#noBookingPage {
+    background-image: url('https://media.cntraveler.com/photos/59cd14cb9465da68882fb4f4/master/pass/Debate_GettyImages-585587819.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 90vh;
+    object-fit: fill;
+    width: 99vw;
+    overflow: hidden;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#find-a-place {
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 40px;
+    width: 100px;
+    border: 1px solid #045de9;
+    background-color: #045de9;
+    color: white;
+    font-size: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#noBookingButtons {
+    display: flex;
+    gap: 10px;
+}
+
+#anywhere {
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 40px;
+    width: 100px;
+    border: 1px solid #FDC670;
+    background-color: #FDC670;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    overflow: hidden;
+}
+
+#bookingPageBackground {
+    object-fit: fill;
+    height: 90vh;
+    width: 100vw;
+    overflow: hidden;
+}

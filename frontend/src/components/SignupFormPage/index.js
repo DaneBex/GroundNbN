@@ -29,71 +29,75 @@ function SignupFormPage() {
     };
 
     const demoUser = e => {
-        return dispatch(sessionActions.login({credential: 'demo@user.io', password: 'password'}))
+        return dispatch(sessionActions.login({ credential: 'demo@user.io', password: 'password' }))
     }
 
     return (
-    <form onSubmit={handleSubmit} id="signup-form">
-        <p id="sign-up">Sign Up</p>
-      <ul id="signup-errors">
-        {errors.map((error, idx) => <li className="signup-error" key={idx}>{error}</li>)}
-      </ul>
-      <div className="divider">
-      <label>
-        Email
-        </label>
-        <input className="input-bar"
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <div id="signup-page-background">
+            <img id="signup-page-image" src="https://wallpapercave.com/wp/wp3604632.jpg"></img>
+            <form onSubmit={handleSubmit} id="signup-form">
+                <h1 id="sign-up-title">Find where to stay on GroundNbN</h1>
+                <p id="sign-up-ptext">Unearth entire estates and private homes for any trip</p>
+                <ul id="signup-errors">
+                    {errors.map((error, idx) => <li className="signup-error" key={idx}>{error}</li>)}
+                </ul>
+                <div className="divider">
+                    <label>
+                        Email
+                    </label>
+                    <input className="input-bar"
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
 
-      </div>
-      <div className="divider">
-      <label>
-        Username
-        </label>
-        <input className="input-bar"
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
+                </div>
+                <div className="divider">
+                    <label>
+                        Username
+                    </label>
+                    <input className="input-bar"
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
 
-      </div>
-      <div className="divider">
-      <label>
-        Password
-         </label>
-        <input className="input-bar"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+                </div>
+                <div className="divider">
+                    <label>
+                        Password
+                    </label>
+                    <input className="input-bar"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
 
-      </div>
-      <div className="divider">
-      <label>
-        Confirm Password
-         </label>
-        <input className="input-bar"
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
+                </div>
+                <div className="divider">
+                    <label>
+                        Confirm Password
+                    </label>
+                    <input className="input-bar"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                    />
 
-      </div>
-      <button
-      id="signup-button"
-      type="submit">Continue</button>
-      <p
-      onClick={demoUser}
-      className="demo-user">Demo User</p>
-    </form >
-  );
+                </div>
+                <button
+                    id="signup-button"
+                    type="submit">Continue</button>
+                <p
+                    onClick={demoUser}
+                    className="demo-user">Demo User</p>
+            </form >
+        </div>
+    );
 }
 
 export default SignupFormPage;
