@@ -61,7 +61,8 @@ export default function ListingPage() {
         }
         bookings.forEach(booking => {
             if (place.id === booking.placeId && ((Date.parse(new Date(startDate)) >= Date.parse(new Date(booking.startDate))) && Date.parse(new Date(startDate)) < Date.parse(new Date(booking.endDate))) || (Date.parse(new Date(endDate)) > Date.parse(new Date(booking.startDate)) && Date.parse(new Date(endDate)) < Date.parse(new Date(booking.endDate)))) {
-                newErrors.push('Place is already booked at this time')
+                newErrors = ['Place is already booked at this time']
+                return setErrors(newErrors)
             }
         })
         if (newErrors.length === 0) {
@@ -137,7 +138,7 @@ export default function ListingPage() {
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
                         type='date'></input>
-                    <label>End Date</label>
+                    <label id='enddate-label'>End Date</label>
                     <input
                         value={endDate}
                         onChange={e => setEndDate(e.target.value)}
