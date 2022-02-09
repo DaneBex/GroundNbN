@@ -6,6 +6,7 @@ import * as sessionActions from './session';
 import placeReducer from "./place";
 import bookingReducer from "./booking";
 import userReducer from "./user";
+import reviewReducer from "./review";
 
 
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
  place : placeReducer,
  booking: bookingReducer,
  user: userReducer,
+ review: reviewReducer,
 });
 
 let enhancer;

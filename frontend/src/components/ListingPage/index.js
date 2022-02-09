@@ -2,6 +2,7 @@ import { makeBooking } from '../../store/booking';
 import { populateUsers } from '../../store/user';
 import './ListingPage.css'
 import { deleteListing } from '../../store/place';
+import { populateReviews } from '../../store/review';
 const { useEffect, useState } = require("react");
 const { useSelector, useDispatch } = require("react-redux");
 const { useParams, useHistory } = require("react-router-dom");
@@ -14,11 +15,19 @@ export default function ListingPage() {
     const { id } = useParams();
     const usersObj = useSelector(state => state.user)
     const bookingsObj = useSelector(state => state.booking)
+    const reviewsObj = useSelector(state => state.review)
     const users = Object.values(usersObj)
     const bookings = Object.values(bookingsObj)
+    const reviews = Object.values(reviewsObj)
     const sessionUser = useSelector(state => state.session.user)
     let place = useSelector(state => state.place[id])
     let PossibleDelete = () => null
+    const placeReviews = reviews.filter(review => review.placeId === place.id)
+    placeReviews.forEach(review => {
+        users.forEach(user => {
+            if (user.id === review.userId) review.userName = user.username
+        })
+    })
 
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
@@ -34,6 +43,7 @@ export default function ListingPage() {
     }
 
     useEffect(() => {
+        dispatch(populateReviews())
         dispatch(populateUsers())
     }, [dispatch])
 
@@ -67,7 +77,7 @@ export default function ListingPage() {
         return history.push('/')
     }
 
-    if (sessionUser.id === place?.userId) {
+    if (sessionUser?.id === place?.userId) {
         console.log('myPlace')
         PossibleDelete = () => {
             return (
@@ -96,7 +106,23 @@ export default function ListingPage() {
                 <img id='listing-img' src={place?.image}></img>
             </div>
             <div id='lower-section'>
-                <p id='description'>{place?.description}</p>
+                <div id='lower-left'>
+                    <p id='description'>{place?.description}</p>
+                    <h2 id='review-title'>Reviews</h2>
+                    <ul id='review-list'>
+                        {placeReviews && placeReviews.map(review => (
+                            <div className='review-author-box'>
+                                <li key={review.id} className='review-ind'>{review.review}</li>
+                                <p key={review.userName} className='review-author'>{`-- ${review.userName}`}</p>
+                            </div>
+                        ))}
+                    </ul>
+                    <form id='create-review-box'>
+                        <h2 id='make-review-title'>Make a Review</h2>
+                        <textarea id='make-review-text'></textarea>
+                        <button id='submit-review-button'>Post</button>
+                    </form>
+                </div>
                 <form onSubmit={createBooking} id='bookit'>
                     <div id='price-list'>
                         <p id='price-page'>{`$${place?.price}`}</p>

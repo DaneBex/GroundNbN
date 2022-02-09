@@ -5,7 +5,7 @@ import { makeListing } from '../../store/place'
 import './HostForm.css'
 
 export default function HostForm() {
-    const userId = useSelector(state => state.session.user.id)
+    const userId = useSelector(state => state.session.user?.id)
     const dispatch = useDispatch()
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
