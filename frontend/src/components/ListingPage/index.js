@@ -2,7 +2,7 @@ import { makeBooking } from '../../store/booking';
 import { populateUsers } from '../../store/user';
 import './ListingPage.css'
 import { deleteListing } from '../../store/place';
-import { populateReviews } from '../../store/review';
+import { makeReview, populateReviews, removeReviewFunc } from '../../store/review';
 const { useEffect, useState } = require("react");
 const { useSelector, useDispatch } = require("react-redux");
 const { useParams, useHistory } = require("react-router-dom");
@@ -31,7 +31,9 @@ export default function ListingPage() {
 
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
-    const [errors, setErrors] = useState([])
+    const [bookingErrors, setErrors] = useState([])
+    const [review, setReview] = useState('')
+    const [reviewErrors, setReviewErrors] = useState([])
 
 
     if (users && place) {
@@ -54,7 +56,7 @@ export default function ListingPage() {
         e.preventDefault();
         if (!startDate || !endDate) newErrors.push('Dates are required')
         if (Date.parse(new Date()) > Date.parse(startDate)) {
-            newErrors.push('Starting date must be tomorrow or later')
+            newErrors.push('Start Date too Early')
         }
         if (Date.parse(endDate) <= Date.parse(startDate)) {
             newErrors.push('Ending date must be after starting date')
@@ -72,10 +74,25 @@ export default function ListingPage() {
         setErrors(newErrors)
     }
 
+    const reviewPost = (e) => {
+        e.preventDefault()
+        let newErrors = []
+        if (!review) newErrors.push('Review must not be blank')
+
+        if (newErrors.length === 0) {
+            setReview('')
+           return dispatch(makeReview({ userId: sessionUser.id, placeId: place.id, review }))
+        }
+    }
+
 
     const deleteBooking = e => {
         dispatch(deleteListing(place.id))
         return history.push('/')
+    }
+
+    const deleteReview = id => {
+        return dispatch(removeReviewFunc(id))
     }
 
     if (sessionUser?.id === place?.userId) {
@@ -89,6 +106,8 @@ export default function ListingPage() {
             )
         }
     }
+
+
 
     return (
         <div id="listing-page">
@@ -112,15 +131,22 @@ export default function ListingPage() {
                     <h2 id='review-title'>Reviews</h2>
                     <ul id='review-list'>
                         {placeReviews && placeReviews.map(review => (
-                            <div className='review-author-box'>
-                                <li key={review.id} className='review-ind'>{review.review}</li>
-                                <p key={review.userName} className='review-author'>{`-- ${review.userName}`}</p>
+                            <div key={review.id + 2000} className='review-author-box'>
+                                <div className='not-delete-button'>
+                                    <li key={review.id} className='review-ind'>{review.review}</li>
+                                    <p key={review.userName} className='review-author'>{`-- ${review.userName}`}</p>
+                                </div>
+                                <div className='possible-deleteButton'>
+                                    {sessionUser?.id === review.userId && <p onClick={() => deleteReview(review.id)} className='delete-review-button'>Delete Review</p>}
+                                </div>
                             </div>
                         ))}
                     </ul>
-                    <form id='create-review-box'>
+                    <form onSubmit={reviewPost} id='create-review-box'>
                         <h2 id='make-review-title'>Make a Review</h2>
-                        <textarea id='make-review-text'></textarea>
+                        <textarea
+                            value={review}
+                            onChange={e => setReview(e.target.value)} id='make-review-text'></textarea>
                         <button id='submit-review-button'>Post</button>
                     </form>
                 </div>
@@ -130,7 +156,7 @@ export default function ListingPage() {
                         <p id='per-night'> / night</p>
                     </div>
                     <ul id='booking-errors'>
-                        {errors.map(error => <li key={error} className='booking-error'>{error}</li>
+                        {bookingErrors.map(error => <li key={error} className='booking-error'>{error}</li>
                         )}
                     </ul>
                     <label id='startdate-label'>Start Date</label>

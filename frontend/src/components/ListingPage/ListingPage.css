@@ -86,8 +86,23 @@ margin: auto;
     overflow: hidden;
 }
 
+.review-author.box {
+    display: flex;
+}
+
+#review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
 .review-author {
     font-weight: 900;
+}
+
+.delete-review-button {
+    text-align: end;
+    cursor: pointer;
 }
 
 #create-review-box {
