@@ -10,4 +10,16 @@ router.get('/', async (req, res) => {
     res.json(vals)
 })
 
+router.post('/', async (req, res) => {
+    const review = await Review.create(req.body)
+    res.json(review)
+})
+
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id;
+    const review = await Review.findByPk(id)
+    await review.destroy()
+    return res.json({id})
+})
+
 module.exports = router;
