@@ -27,13 +27,13 @@ export default function BookingsPage() {
             {bookings && bookings.map(booking => (
                 <div key={booking.id} id='booking-box'>
                     <div key={booking.userId} className='name-img'>
-                        <p key={booking.Place.name} className='booking-name'>{booking.Place?.name}</p>
-                        <img key={booking.image} className='booking-image' src={booking.Place?.image}></img>
+                        <p key={booking.Place?.name} className='booking-name'>{booking.Place?.name}</p>
+                        <img key={booking.Place?.image} className='booking-image' src={booking.Place?.image}></img>
                     </div>
                     <div key={booking.id + 1000} className='times-price'>
                         <p key={booking.startDate} className='start-date'>{`Start Date: ${new Date(booking.startDate.replace(/-/g, '\/').replace(/T.+/, '')).toString().slice(0, 15)}`}</p>
                         <p key={booking.endDate} className='end-date'>{`End Date: ${new Date(booking.endDate.replace(/-/g, '\/').replace(/T.+/, '')).toString().slice(0, 15)}`}</p>
-                        <p key={booking.price} className='booking-price'>{`$${booking.Place.price} / night`}</p>
+                        <p key={booking.Place?.price} className='booking-price'>{`$${booking.Place?.price} / night`}</p>
                     </div>
                     <div key={booking.name + 'delete'} className='delete-booking'>
                         <p onClick={() => dispatch(deleteBooking(booking.id))} className='delete-booking-words' key={booking.price + 1000}>Delete My Booking</p>
