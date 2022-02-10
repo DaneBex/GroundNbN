@@ -72,6 +72,10 @@
     transition-duration: .5s;
 }
 
+.fa-moon {
+    border: 1px solid red;
+}
+
 #Host-place {
     position: absolute;
     right: 20%;

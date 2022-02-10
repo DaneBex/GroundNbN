@@ -1,5 +1,11 @@
-* {
+:root {
+    --primary-color: white;
+    --secondary-color: black;
+    --third-color: #fdc670
+}
 
+#welcome-to-home {
+    color: var(--secondary-color)
 }
 
 .listing-photos {
@@ -26,14 +32,101 @@
     border-bottom: 1px solid black;
 }
 
-#home-page-welcome {
-    height: 400px;
-    background-color: #FDC670;
+#home-page-specific {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 60px;
+}
+
+#country-specific {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    height: 80%;
+    margin-left: 20px;
+    margin-right: 0px;
+    align-items: center;
     justify-content: center;
-    gap: 30px;
-    padding-left: 200px;
+    width: 150px;
+    margin-top: 10px;
+    border-right: 1px solid grey;
+}
+
+#price-specific {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 80%;
+    margin-left: 0px;
+    margin-right: 20px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    border-right: 1px solid grey
+}
+
+#country-label {
+font-weight: 300;
+}
+
+#country-select {
+    width: fit-content;
+    border-radius: 12px;
+    height: 25px;
+}
+
+#price-label {
+    overflow: hidden;
+    margin-top: 5px;
+font-weight: 300;
+}
+
+#price-input {
+    width: 100px;
+}
+
+
+#home-page-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#home-page-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+#home-page-typeof {
+    display: flex;
+    background-color: white;
+    height: 75px;
+    width: 400px;
+    border-radius: 25px;
+}
+
+#specifics-button {
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 12px;
+    width: 30%;
+    height: 30px;
+    border: 1px solid white;
+    background-color: var(--third-color);
+    color: white;
+    margin: auto;
+    margin-right: 20px;
+}
+
+#home-page-welcome {
+    height: 400px;
+    background-color: var(--third-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 h1 {
@@ -51,6 +144,7 @@ h1 {
 }
 
 #little-text {
+    color: var(--secondary-color);
     font-weight: lighter;
     font-size: 20px;
 }
@@ -58,7 +152,7 @@ h1 {
 #post-place {
     width: 100px;
     height: 30px;
-    border: 1px solid #FDC670;
+    border: 1px solid #045de9;
     border-radius: 12px;
     background-color: #045de9;
     color: white;

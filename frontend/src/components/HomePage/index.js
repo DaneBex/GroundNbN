@@ -30,9 +30,30 @@ export default function HomePage() {
     return (
         <>
             <div id="home-page-welcome">
-                <h1>Welcome to GroundNbN!</h1>
+                <div id="home-page-left">
+                <h1 id="welcome-to-home">Welcome to GroundNbN!</h1>
                 <p id="little-text">Find a spot to stay or host your own place for others</p>
                 <Link id='post-place' to='/host'>Host</Link>
+                </div>
+                <div id="home-page-right">
+                    <h2>No Matter the budget or location</h2>
+                    <p id="little-text">Find the perfect spot for you</p>
+                    <form id="home-page-typeof">
+                        <div id="country-specific">
+                        <label id="country-label">Country</label>
+                        <select id="country-select">
+                            <option>United States</option>
+                            <option>Canada</option>
+                            <option>Mexico</option>
+                        </select>
+                        </div>
+                        <div id="price-specific">
+                        <label id="price-label">Max Price:</label>
+                        <input id="price-input" type='number'></input>
+                        </div>
+                        <button id="specifics-button">Find Place</button>
+                    </form>
+                </div>
             </div>
             <div id="places">
                 {places && places.map(place => (
