@@ -111,6 +111,71 @@ module.exports = {
           description: "House is the original on the street, dated 1904. The house was completely refreshed and rebuilt adding an additional 2200 sq feet for a total of 3500 sq feet. 6 bedrooms and 4 1/2 bath. The house is a relaxing Oasis in the city. The backyard has a gas Fireplace, cedar pergola and pool house with changing room. There is a natural gas grill and heated shower. The pool and hotub with another large firepit feature with seating. You really must see to appreciate this 5 star private backyard",
           createdAt: new Date(),
           updatedAt: new Date()
+        },
+        {
+          userId: 10,
+          address: '34 Ajijic Rd',
+          city: 'Ramos',
+          state: 'Aguascalientes',
+          country: 'Mexico',
+          name: 'Sunny Resort',
+          price: '99',
+          image: "https://cdn.decoratorist.com/wp-content/uploads/modern-small-mexican-house-designlook-houses-2017-404302.jpg",
+          description: "The Cozy Pool House is nestled in a gated family compound of three units, all self-contained and owner-occupied, each with separate entrances, very private and peaceful.",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 14,
+          address: '9714 Fregan Ln',
+          city: 'Inike',
+          state: 'Alberta',
+          country: 'Canada',
+          name: 'Snowy Cabin',
+          price: '150',
+          image: "https://www.wvlogcabins.com/wp-content/uploads/2020/10/HarmansCabin3_02-scaled.jpg",
+          description: "Surrounded by trees, settled right on Lake Hayward sits this charming & cozy cabin in a little cabin community less than half a mile from downtown",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 15,
+          address: '732 Zumash Dr',
+          city: 'Yumuke',
+          state: 'Campeche',
+          country: 'Mexico',
+          name: 'Private Villa',
+          price: '250',
+          image: "https://static01.nyt.com/images/2020/03/09/realestate/09WYG-CA-slide-JV3D/09WYG-CA-slide-JV3D-mediumSquareAt3X.jpg",
+          description: "This chic villa sleeps up to 6 guests comfortably and includes a fully equipped open concept kitchen / living room, 2 bedrooms, a beautiful modern bathroom, a large HD Smart TV with Netflix access, air conditioning and free WIFI.",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 13,
+          address: '21 Rimine Rd',
+          city: 'Pomone',
+          state: 'Manitoba',
+          country: 'Canada',
+          name: 'Come and Fish Aye',
+          price: '399',
+          image: "https://cdn.vox-cdn.com/thumbor/0eoiN9XqqsSVbiCNo_h0hbUP_yI=/0x0:1023x682/1200x800/filters:focal(431x260:593x422)/cdn.vox-cdn.com/uploads/chorus_image/image/64006695/0b0cd00c_891f_49a5_a75c_cdd640a23020.f10.0.jpg",
+          description: "To describe this place in two words: Fire & Water. Crackling fireplaces. A steaming hot tub in the foreground of endless views and sounds of a babbling river. A calming comfort of modern design amenities with natural wood feelings. Enough space to spread, yet slight enough to feel comforted and cared for.",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 12,
+          address: '325 Josemen Rd',
+          city: 'Rihin',
+          state: 'Chiapas',
+          country: 'Mexico',
+          name: 'Home away from Home',
+          price: '499',
+          image: "https://images.dwell.com/photos-6176523132546707456/6261342158026694656-large/masterfully-architected-rising-glen.jpg",
+          description: "Every day is Paradise here! We are Perfect for summer or winter vacations. Beach lovers enjoy our Summer. You are free to walk the beach in either direction for miles and miles! Our large Cedar Deck with log railing wraps around two sides of the cottage and directly overlooks the beach with a gorgeous panoramic view",
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
       ], {});
 
