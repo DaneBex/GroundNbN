@@ -40,6 +40,7 @@ export const populatePlaces = () => async (dispatch) => {
     }
 }
 
+
 export const makeListing = (formInfo) => async dispatch => {
     const response = await csrfFetch('/api/places', {
         method: 'post',
@@ -75,6 +76,7 @@ export const deleteListing = (id) => async dispatch => {
         dispatch(removePlace(id))
     }
 }
+
 
 const initialState = {};
 

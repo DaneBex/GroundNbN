@@ -1,7 +1,7 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect, Link, useHistory } from "react-router-dom"
-import { deleteListing, populatePlaces } from "../../store/place"
+import { deleteListing, populatePlaces, populateSpecificPlaces } from "../../store/place"
 import EditHostForm from "../EditHostForm"
 import './HomePage.css'
 
@@ -11,17 +11,38 @@ export default function HomePage() {
     const sessionUser = useSelector((state) => state.session.user)
     const placesObj = useSelector((state) => state.place)
     const history = useHistory()
-    const places = Object.values(placesObj)
+
+
+    const [maxPrice, setMaxPrice] = useState('')
+    const [country, setCountry] = useState('United States');
+    const [places, setPlaces] = useState([])
+
+
 
     useEffect(() => {
         dispatch(populatePlaces())
 
-        console.log('happened')
     }, [dispatch])
 
+    setPlaces(Object.values(placesObj))
+
     const takeToPage = (id) => {
-        console.log(id)
         return history.push(`/places/${id}`)
+    }
+
+    const newTypePage = (e) => {
+        e.preventDefault()
+        console.log('asdf')
+        if (country && maxPrice) {
+            setPlaces(places.filter(place => {
+                return (place.country === country && place.price <= maxPrice)
+            }))
+        }
+        if (!maxPrice) {
+            setPlaces(places.filter(place => {
+                return place.country === country
+            }))
+        }
     }
 
 
@@ -38,10 +59,13 @@ export default function HomePage() {
                 <div id="home-page-right">
                     <h2>No Matter the budget or location</h2>
                     <p id="little-text">Find the perfect spot for you</p>
-                    <form id="home-page-typeof">
+                    <form onSubmit={() => newTypePage()} id="home-page-typeof">
                         <div id="country-specific">
                         <label id="country-label">Country</label>
-                        <select id="country-select">
+                        <select
+                        value={country}
+                        onChange={e => setCountry(e.target.value)}
+                        id="country-select">
                             <option>United States</option>
                             <option>Canada</option>
                             <option>Mexico</option>
@@ -49,7 +73,10 @@ export default function HomePage() {
                         </div>
                         <div id="price-specific">
                         <label id="price-label">Max Price:</label>
-                        <input id="price-input" type='number'></input>
+                        <input
+                        value={maxPrice}
+                        onChange={e => setMaxPrice(e.target.value)}
+                        id="price-input" type='number'></input>
                         </div>
                         <button id="specifics-button">Find Place</button>
                     </form>
