@@ -11,6 +11,8 @@ export default function HomePage() {
     const sessionUser = useSelector((state) => state.session.user)
     const placesObj = useSelector((state) => state.place)
     const history = useHistory()
+    let originalPlaces;
+    let newTypePage
 
 
     const [maxPrice, setMaxPrice] = useState('')
@@ -18,21 +20,25 @@ export default function HomePage() {
     const [places, setPlaces] = useState([])
 
 
-
     useEffect(() => {
         dispatch(populatePlaces())
 
     }, [dispatch])
 
-    setPlaces(Object.values(placesObj))
+    useEffect(() => {
+        setPlaces(Object.values(placesObj))
+    }, [placesObj])
+
 
     const takeToPage = (id) => {
         return history.push(`/places/${id}`)
     }
 
-    const newTypePage = (e) => {
+    newTypePage = (e) => {
         e.preventDefault()
-        console.log('asdf')
+        console.log('placesObj: ', placesObj)
+        console.log('places: ', places)
+        //console.log('places:', places, 'country:', country, 'maxPrice:', maxPrice)
         if (country && maxPrice) {
             setPlaces(places.filter(place => {
                 return (place.country === country && place.price <= maxPrice)
@@ -44,7 +50,7 @@ export default function HomePage() {
             }))
         }
     }
-
+    // console.log('places after change:', places)
 
     if (!sessionUser) return <Redirect to='/signup' />
 
@@ -52,31 +58,31 @@ export default function HomePage() {
         <>
             <div id="home-page-welcome">
                 <div id="home-page-left">
-                <h1 id="welcome-to-home">Welcome to GroundNbN!</h1>
-                <p id="little-text">Find a spot to stay or host your own place for others</p>
-                <Link id='post-place' to='/host'>Host</Link>
+                    <h1 id="welcome-to-home">Welcome to GroundNbN!</h1>
+                    <p id="little-text">Find a spot to stay or host your own place for others</p>
+                    <Link id='post-place' to='/host'>Host</Link>
                 </div>
                 <div id="home-page-right">
                     <h2>No Matter the budget or location</h2>
                     <p id="little-text">Find the perfect spot for you</p>
-                    <form onSubmit={() => newTypePage()} id="home-page-typeof">
+                    <form onSubmit={newTypePage} id="home-page-typeof">
                         <div id="country-specific">
-                        <label id="country-label">Country</label>
-                        <select
-                        value={country}
-                        onChange={e => setCountry(e.target.value)}
-                        id="country-select">
-                            <option>United States</option>
-                            <option>Canada</option>
-                            <option>Mexico</option>
-                        </select>
+                            <label id="country-label">Country</label>
+                            <select
+                                value={country}
+                                onChange={e => setCountry(e.target.value)}
+                                id="country-select">
+                                <option>United States</option>
+                                <option>Canada</option>
+                                <option>Mexico</option>
+                            </select>
                         </div>
                         <div id="price-specific">
-                        <label id="price-label">Max Price:</label>
-                        <input
-                        value={maxPrice}
-                        onChange={e => setMaxPrice(e.target.value)}
-                        id="price-input" type='number'></input>
+                            <label id="price-label">Max Price:</label>
+                            <input
+                                value={maxPrice}
+                                onChange={e => setMaxPrice(e.target.value)}
+                                id="price-input" type='number'></input>
                         </div>
                         <button id="specifics-button">Find Place</button>
                     </form>
