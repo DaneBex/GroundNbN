@@ -109,6 +109,30 @@ font-weight: 300;
     border-radius: 25px;
 }
 
+#noPlaceFound {
+    background-image: url("https://cdn.dribbble.com/users/453325/screenshots/5573953/empty_state.png");
+    height: 500px;
+    padding-top: 20px;
+    background-repeat: no-repeat;
+    width: 50vw;
+    color: black;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: 300;
+}
+
+#noPlaceFoundButton {
+    border-radius: 12px;
+    background-color: #045de9;
+    border: 1px solid #045de9;
+    color: white;
+    height: 30px;
+    cursor: pointer;
+}
+
 #specifics-button {
     cursor: pointer;
     margin-top: 20px;

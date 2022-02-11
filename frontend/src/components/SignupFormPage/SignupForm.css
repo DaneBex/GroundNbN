@@ -53,6 +53,7 @@ right: 30px;
     background: linear-gradient(to left, #09c6f9, #045de9);
     cursor: pointer;
     transition-duration: .5s;
+    margin-bottom: 10px;
 }
 
 
@@ -105,9 +106,11 @@ right: 30px;
 }
 
 .demo-user {
+    position: absolute;
+    top: 5px;
     text-align: right;
     width: 100%;
-    margin-right: 50px;
+    right: 10px;
     cursor: pointer;
     padding-bottom: 5px;
     overflow: hidden;
