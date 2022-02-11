@@ -10,14 +10,14 @@ export default function HomePage() {
     const dispatch = useDispatch()
     const sessionUser = useSelector((state) => state.session.user)
     const placesObj = useSelector((state) => state.place)
+    //let originalPlaces = Object.values(placesObj)
     const history = useHistory()
-    let originalPlaces;
-    let newTypePage
 
 
     const [maxPrice, setMaxPrice] = useState('')
     const [country, setCountry] = useState('United States');
-    const [places, setPlaces] = useState([])
+   const [places, setPlaces] = useState([])
+   const [allPlaces, setAllPlaces] = useState([])
 
 
     useEffect(() => {
@@ -27,6 +27,7 @@ export default function HomePage() {
 
     useEffect(() => {
         setPlaces(Object.values(placesObj))
+        setAllPlaces(Object.values(placesObj))
     }, [placesObj])
 
 
@@ -34,18 +35,18 @@ export default function HomePage() {
         return history.push(`/places/${id}`)
     }
 
-    newTypePage = (e) => {
-        e.preventDefault()
+    let newTypePage = (e) => {
+        e.preventDefault();
         console.log('placesObj: ', placesObj)
         console.log('places: ', places)
         //console.log('places:', places, 'country:', country, 'maxPrice:', maxPrice)
         if (country && maxPrice) {
-            setPlaces(places.filter(place => {
-                return (place.country === country && place.price <= maxPrice)
+            setPlaces(allPlaces.filter(place => {
+                return (place.country === country && parseInt(place.price) <= maxPrice)
             }))
         }
         if (!maxPrice) {
-            setPlaces(places.filter(place => {
+            setPlaces(allPlaces.filter(place => {
                 return place.country === country
             }))
         }
