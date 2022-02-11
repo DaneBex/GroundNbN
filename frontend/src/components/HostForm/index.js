@@ -95,12 +95,13 @@ export default function HostForm() {
                 onChange={(e) => setPrice(e.target.value)}
                 type='number'></input>
             </div>
-            <div className='divider'>
+            <div id='house-image-host' className='divider'>
                 <label>Home Image</label>
                 <textarea
                 value={image}
                 onChange={e => setImage(e.target.value)}
                 placeholder='image link here'></textarea>
+                 </div>
                 <div>
                 <label>Description</label>
                 <textarea
@@ -109,7 +110,7 @@ export default function HostForm() {
                 onChange={e => setDescription(e.target.value)}
                 placeholder='Description Here'></textarea>
                 </div>
-            </div>
+
             <button id='submit-form'>Post</button>
         </form>
     )

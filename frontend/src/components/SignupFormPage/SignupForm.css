@@ -5,15 +5,20 @@
     overflow: hidden;
 }
 
+label {
+    overflow: hidden;
+}
+
 .signup-error {
     color: red;
+    overflow: hidden;
 }
 
 #signup-errors {
     display: flex;
     justify-content: center;
     text-align: center;
-    height: 50px;
+    height: 73px;
 }
 
 #signup-page-image {

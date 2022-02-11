@@ -15,6 +15,10 @@
     gap: 20px;
 }
 
+#house-image-host {
+
+}
+
 #form-for {
     color: #045de9;
     font-weight: 300;
@@ -43,7 +47,7 @@ textarea {
 
 #description-box {
     margin-top: 5px;
-    width: 100%;
+    width: 400px;
     height: 150px;
 }
 
