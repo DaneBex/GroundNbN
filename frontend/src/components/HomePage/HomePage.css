@@ -104,6 +104,7 @@ font-weight: 300;
     display: flex;
     background-color: white;
     height: 75px;
+    padding-bottom: 5px;
     width: 400px;
     border-radius: 25px;
 }
