@@ -47,6 +47,19 @@ export const removeReviewFunc = (id) => async dispatch => {
     }
 }
 
+export const editReview = (id, formInfo) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${id}`, {
+        method: 'put',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formInfo)
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(addReview(data))
+    }
+}
+
 export const makeReview = formInfo => async dispatch => {
     const response = await csrfFetch('/api/reviews', {
         method: 'post',

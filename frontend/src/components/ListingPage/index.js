@@ -2,7 +2,7 @@ import { makeBooking } from '../../store/booking';
 import { populateUsers } from '../../store/user';
 import './ListingPage.css'
 import { deleteListing } from '../../store/place';
-import { makeReview, populateReviews, removeReviewFunc } from '../../store/review';
+import { editReview, makeReview, populateReviews, removeReviewFunc } from '../../store/review';
 const { useEffect, useState } = require("react");
 const { useSelector, useDispatch } = require("react-redux");
 const { useParams, useHistory } = require("react-router-dom");
@@ -22,6 +22,7 @@ export default function ListingPage() {
     const sessionUser = useSelector(state => state.session.user)
     let place = useSelector(state => state.place[id])
     let PossibleDelete = () => null
+    let selected = null;
     const placeReviews = reviews.filter(review => review.placeId === place.id)
     placeReviews.forEach(review => {
         users.forEach(user => {
@@ -34,6 +35,10 @@ export default function ListingPage() {
     const [bookingErrors, setErrors] = useState([])
     const [review, setReview] = useState('')
     const [reviewErrors, setReviewErrors] = useState([])
+    const [showUpdate, setShowUpdate] = useState(false)
+    const [updatedReview, setUpdatedReview] = useState('')
+    const [updatedReviewError, setUpdatedReviewError] = useState('')
+
 
 
     if (users && place) {
@@ -63,7 +68,7 @@ export default function ListingPage() {
         }
         bookings.forEach(booking => {
             if (place.id === booking.placeId && ((Date.parse(new Date(startDate)) >= Date.parse(new Date(booking.startDate))) && Date.parse(new Date(startDate)) < Date.parse(new Date(booking.endDate))) || (Date.parse(new Date(endDate)) > Date.parse(new Date(booking.startDate)) && Date.parse(new Date(endDate)) < Date.parse(new Date(booking.endDate)))) {
-                newErrors = ['Place is already booked at this time']
+                newErrors = [`Place is already booked at this time`]
                 return setErrors(newErrors)
             }
         })
@@ -81,7 +86,7 @@ export default function ListingPage() {
 
         if (newErrors.length === 0) {
             setReview('')
-           return dispatch(makeReview({ userId: sessionUser.id, placeId: place.id, review }))
+            return dispatch(makeReview({ userId: sessionUser.id, placeId: place.id, review }))
         }
     }
 
@@ -93,6 +98,25 @@ export default function ListingPage() {
 
     const deleteReview = id => {
         return dispatch(removeReviewFunc(id))
+    }
+
+    const updateReview = id => {
+        setUpdatedReviewError('')
+        console.log(updatedReview.length < 1)
+        if (updatedReview.length < 1) return setUpdatedReviewError('Review cannot be blank')
+
+        setUpdatedReview('')
+
+        const vals = {
+            userId: sessionUser.id,
+            placeId: place.id,
+            review: updatedReview,
+        }
+
+        if (updatedReviewError.length > 1) {
+            dispatch(editReview(id, vals))
+            return setShowUpdate(false)
+        }
     }
 
     if (sessionUser?.id === place?.userId) {
@@ -137,7 +161,21 @@ export default function ListingPage() {
                                     <p key={review.userName} className='review-author'>{`-- ${review.userName}`}</p>
                                 </div>
                                 <div className='possible-deleteButton'>
-                                    {sessionUser?.id === review.userId && <p onClick={() => deleteReview(review.id)} className='delete-review-button'>Delete Review</p>}
+                                    {sessionUser?.id === review.userId &&
+                                        <div className='owner-review'>
+                                            <div className='owner-option-buttons'>
+                                            <p onClick={() => setShowUpdate(review.id)} className='update-review-button'>Change Review</p>
+                                            <p onClick={() => deleteReview(review.id)} className='delete-review-button'>Delete Review</p>
+                                            </div>
+                                {review.id === showUpdate &&
+                                                <div id='show-review-text'>
+                                                    <h2 id='new-review-message-title'>New Review Message</h2>
+                                                    {updatedReviewError && <p id='updatedReviewErrorP'>{updatedReviewError}</p>}
+                                                    <textarea onChange={e => setUpdatedReview(e.target.value)} value={updatedReview} id='review-update-textbox'></textarea>
+                                                    <button onClick={() => updateReview(review.id)} id='review-update-submit'>Edit</button>
+                                                    <p id='cancel-update-review-button' onClick={() => setShowUpdate(false)}>Cancel</p>
+                                                </div>}
+                                        </div>}
                                 </div>
                             </div>
                         ))}

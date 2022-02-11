@@ -100,9 +100,14 @@ margin: auto;
     font-weight: 900;
 }
 
+#new-review-message-title {
+    overflow: hidden;
+}
+
 .delete-review-button {
     text-align: end;
     cursor: pointer;
+    overflow: hidden;
 }
 
 #create-review-box {
@@ -176,6 +181,56 @@ margin: auto;
 #enddate-label {
 border: 1px solid white;
 overflow: hidden;
+}
+
+.owner-option-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+#show-review-text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    width: 400px;
+    border-radius: 12px;
+    left: 25%;
+    border: 1px solid #717171;
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+#review-update-submit {
+    border-radius: 12px;
+    border: 1px solid #045de9;
+    background-color: #045de9;
+    color: white;
+    height: 20px;
+    width: 70px;
+    cursor: pointer;
+}
+
+#cancel-update-review-button {
+    margin-left: 80%;
+}
+
+#review-update-textbox {
+    width: 75%;
+    height: 50%;
+}
+
+#cancel-update-review-button {
+    cursor: pointer;
+}
+
+.update-review-button {
+    cursor: pointer;
+    overflow: hidden;
 }
 
 
