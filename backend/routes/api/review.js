@@ -15,6 +15,14 @@ router.post('/', async (req, res) => {
     res.json(review)
 })
 
+router.put('/:id', async (req, res) => {
+    const id = req.params.id
+    const review = await Review.findByPk(id)
+    review.set(req.body)
+    await review.save()
+    res.json(review)
+})
+
 router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     const review = await Review.findByPk(id)
