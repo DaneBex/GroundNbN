@@ -101,11 +101,9 @@ export default function ListingPage() {
     }
 
     const updateReview = id => {
+        console.log('SOMETHING', updatedReview, updatedReviewError.length === 0)
         setUpdatedReviewError('')
-        console.log(updatedReview.length < 1)
-        if (updatedReview.length < 1) return setUpdatedReviewError('Review cannot be blank')
-
-        setUpdatedReview('')
+        if (updatedReview.length === 0) setUpdatedReviewError('Review cannot be blank')
 
         const vals = {
             userId: sessionUser.id,
@@ -113,8 +111,9 @@ export default function ListingPage() {
             review: updatedReview,
         }
 
-        if (updatedReviewError.length > 1) {
+        if (updatedReviewError.length === 0) {
             dispatch(editReview(id, vals))
+            setUpdatedReview('')
             return setShowUpdate(false)
         }
     }
@@ -169,7 +168,7 @@ export default function ListingPage() {
                                             </div>
                                 {review.id === showUpdate &&
                                                 <div id='show-review-text'>
-                                                    <h2 id='new-review-message-title'>New Review Message</h2>
+                                                    <h2 id='new-review-message-title'>Edit Review Message</h2>
                                                     {updatedReviewError && <p id='updatedReviewErrorP'>{updatedReviewError}</p>}
                                                     <textarea onChange={e => setUpdatedReview(e.target.value)} value={updatedReview} id='review-update-textbox'></textarea>
                                                     <button onClick={() => updateReview(review.id)} id='review-update-submit'>Edit</button>
