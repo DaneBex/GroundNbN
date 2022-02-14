@@ -1,4 +1,4 @@
-import { makeBooking } from '../../store/booking';
+import { makeBooking, populateBookings } from '../../store/booking';
 import { populateUsers } from '../../store/user';
 import './ListingPage.css'
 import { deleteListing } from '../../store/place';
@@ -30,6 +30,8 @@ export default function ListingPage() {
         })
     })
 
+
+
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
     const [bookingErrors, setErrors] = useState([])
@@ -52,10 +54,14 @@ export default function ListingPage() {
     useEffect(() => {
         dispatch(populateReviews())
         dispatch(populateUsers())
+        dispatch(populateBookings())
     }, [dispatch])
+
+    console.log(bookingsObj, reviewsObj)
 
 
     const createBooking = async (e) => {
+        console.log('HAPPENING!!!!!', bookings)
         let newErrors = []
         console.log(startDate, endDate)
         e.preventDefault();
