@@ -55,6 +55,7 @@ export default function HomePage() {
 
     if (!sessionUser) return <Redirect to='/signup' />
 
+    console.log(places)
 
     const HomePage = () => {
         if (places.length > 0) {

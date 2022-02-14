@@ -57,8 +57,6 @@ export default function ListingPage() {
         dispatch(populateBookings())
     }, [dispatch])
 
-    console.log(bookingsObj, reviewsObj)
-
 
     const createBooking = async (e) => {
         console.log('HAPPENING!!!!!', bookings)
