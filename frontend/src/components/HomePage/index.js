@@ -84,6 +84,7 @@ export default function HomePage() {
                                 <div id="price-specific">
                                     <label id="price-label">Max Price:</label>
                                     <input
+                                        autoFocus
                                         value={maxPrice}
                                         onChange={e => setMaxPrice(e.target.value)}
                                         id="price-input" type='number'></input>
